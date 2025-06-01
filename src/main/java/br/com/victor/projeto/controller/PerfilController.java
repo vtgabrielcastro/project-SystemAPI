@@ -14,38 +14,35 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.victor.projeto.dto.RecursoDTO;
-import br.com.victor.projeto.service.RecursoService;
+import br.com.victor.projeto.dto.PerfilDTO;
+import br.com.victor.projeto.service.PerfilService;
 
 @RestController
-@RequestMapping(value = "/recurso")
+@RequestMapping(value = "/perfil")
 @CrossOrigin
-public class RecursoController {
+public class PerfilController {
 	@Autowired
-	RecursoService recursoService;
-
+	PerfilService perfilService;
+	
 	@GetMapping
-	public List<RecursoDTO> listarTodos(){
-		return recursoService.listarTodos();
+	public List<PerfilDTO> listarTodos(){
+		return perfilService.listarTodos();
 	}
-
+	
 	@PostMapping
-	public void inserir(@RequestBody RecursoDTO recurso){
-		recursoService.inserir(recurso);
+	public void inserir(@RequestBody PerfilDTO perfil){
+		perfilService.inserir(perfil);
 	}
-
+	
 	@PutMapping
-	public RecursoDTO alterar(@RequestBody RecursoDTO recurso){
-		return recursoService.alterar(recurso);
+	public PerfilDTO alterar(@RequestBody PerfilDTO perfil){
+		return perfilService.alterar(perfil);
 	}
-
+	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> excluir(@PathVariable Long id){
-		recursoService.excluir(id);
+		perfilService.excluir(id);
 		return ResponseEntity.ok().build();
 	}
-
-
-
 
 }
