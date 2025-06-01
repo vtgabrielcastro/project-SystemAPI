@@ -14,36 +14,39 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.victor.projeto.dto.UsuarioDTO;
-import br.com.victor.projeto.service.UsuarioService;
+import br.com.victor.projeto.dto.RecursoDTO;
+import br.com.victor.projeto.service.RecursoService;
 
 @RestController
-@RequestMapping(value = "/usuario")
+@RequestMapping(value = "/recurso")
 @CrossOrigin
-public class UsuarioController {
-
+public class RecursoController {
 	@Autowired
-	private UsuarioService usuarioService;
+	RecursoService recursoService;
 
-	//se fazer uma requisição GET no endereço /usuario, irá executar este metodo!!
+
 	@GetMapping
-	public List<UsuarioDTO> listarTodos(){
-		return usuarioService.listarTodos();
+	public List<RecursoDTO> listarTodos(){
+		return recursoService.listarTodos();
 	}
 
 	@PostMapping
-	public void inserir(@RequestBody UsuarioDTO usuario) {
-		usuarioService.inserir(usuario);
+	public void inserir(@RequestBody RecursoDTO recurso) {
+		recursoService.inserir(recurso);
 	}
 
 	@PutMapping
-	public UsuarioDTO alterar(@RequestBody UsuarioDTO usuario) {
-		return usuarioService.alterar(usuario);
+	public RecursoDTO alterar(@RequestBody RecursoDTO recurso) {
+		return recursoService.alterar(recurso);
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Void> excluir(@PathVariable Long id){
-		usuarioService.excluir(id);
+	public ResponseEntity<Void> excluir(@PathVariable Long id) {
+		recursoService.excluir(id);
 		return ResponseEntity.ok().build();
 	}
+
+
+
+
 }

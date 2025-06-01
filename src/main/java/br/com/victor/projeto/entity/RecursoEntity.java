@@ -4,7 +4,7 @@ import java.util.Objects;
 
 import org.springframework.beans.BeanUtils;
 
-import br.com.victor.projeto.dto.UsuarioDTO;
+import br.com.victor.projeto.dto.RecursoDTO;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,76 +13,37 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name= "USUARIO")
-public class UsuarioEntity {
+@Table(name = "RECURSO")
+public class RecursoEntity {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-
 	@Column(nullable = false)
 	private String nome;
-
 	@Column(nullable = false)
-	private String login;
-
-	@Column(nullable = false)
-	private String senha;
-
-	@Column(nullable = false)
-	private String email;
-
+	private String chave;
 	public Long getId() {
 		return id;
 	}
-
 	public void setId(Long id) {
 		this.id = id;
 	}
-
 	public String getNome() {
 		return nome;
 	}
-
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
-	public String getLogin() {
-		return login;
+	public String getChave() {
+		return chave;
 	}
-
-	public void setLogin(String login) {
-		this.login = login;
+	public void setChave(String chave) {
+		this.chave = chave;
 	}
-
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public UsuarioEntity(UsuarioDTO usuario) {
-		BeanUtils.copyProperties(usuario, this);
-	}
-	public UsuarioEntity() {
-
-	}
-
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
 	}
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
@@ -91,9 +52,15 @@ public class UsuarioEntity {
 		if ((obj == null) || (getClass() != obj.getClass())) {
 			return false;
 		}
-		UsuarioEntity other = (UsuarioEntity) obj;
+		RecursoEntity other = (RecursoEntity) obj;
 		return Objects.equals(id, other.id);
 	}
 
+	public RecursoEntity() {
+
+	}
+	public RecursoEntity(RecursoDTO recurso) {
+		BeanUtils.copyProperties(recurso, this);
+	}
 
 }

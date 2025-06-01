@@ -6,22 +6,22 @@ import br.com.victor.projeto.entity.UsuarioEntity;
 
 public class UsuarioDTO {
 	private Long id;
-	
+
 	private String nome;
-	
+
 	private String login;
-	
+
 	private String senha;
-	
+
 	private String email;
 
 	public UsuarioDTO(UsuarioEntity usuario) {
 		BeanUtils.copyProperties(usuario, this);
 	}
 	public UsuarioDTO() {
-		
+
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -61,5 +61,5 @@ public class UsuarioDTO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
 }
